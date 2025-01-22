@@ -16,12 +16,15 @@ fn main() {
     let file_path = Path::new(&args[2]);
     let password = &args[3];
 
+    let file_type = if file_path.is_dir() { "FOLDER" } else { "FILE" };
+
     match option.as_str() {
         "-d" => {
-            println!("Decrypting file..");
+            println!("DECRYPTING {} {}", file_type, file_path.display());
             match decrypt_path(file_path, password) {
-                Ok(_) => {
-                    println!("Decrypted file");
+                Ok(path) => {
+                    println!("DECRYPTED SUCCESSFULLY");
+                    println!("OUTPUT {}", path.display());
                 }
                 Err(err) => {
                     println!("{:?}", err);
@@ -29,10 +32,10 @@ fn main() {
             };
         }
         "-e" => {
-            println!("Encrypting file..");
+            println!("ENCRYPTING {} {}", file_type, file_path.display());
             match encrypt_path(file_path, password) {
-                Ok(_) => {
-                    println!("Encrypted file");
+                Ok(path) => {
+                    println!("ENCRYPTED {}", path.display());
                 }
                 Err(err) => {
                     println!("{:?}", err);
