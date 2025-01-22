@@ -243,7 +243,6 @@ pub fn decrypt_path(encrypted_path: &Path, password: &str) -> Result<PathBuf, Cr
         let decrypted_dir = parent.join(&metadata.original_name);
         fs::create_dir_all(&decrypted_dir)?;
 
-        let mut current_pos = 0;
         for file_info in metadata.files {
             // Read and decrypt file contents
             let mut encrypted_contents = vec![0u8; file_info.content_size as usize];
@@ -260,8 +259,6 @@ pub fn decrypt_path(encrypted_path: &Path, password: &str) -> Result<PathBuf, Cr
 
             let mut decrypted_file = File::create(file_path)?;
             decrypted_file.write_all(&decrypted_contents)?;
-
-            current_pos += file_info.content_size;
         }
 
         Ok(decrypted_dir)
