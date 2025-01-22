@@ -27,7 +27,7 @@ fn main() {
                     println!("OUTPUT {}", path.display());
                 }
                 Err(err) => {
-                    println!("{:?}", err);
+                    println!("{}", err);
                 }
             };
         }
@@ -38,7 +38,7 @@ fn main() {
                     println!("ENCRYPTED {}", path.display());
                 }
                 Err(err) => {
-                    println!("{:?}", err);
+                    println!("{}", err);
                 }
             };
         }
