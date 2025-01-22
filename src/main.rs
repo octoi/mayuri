@@ -30,7 +30,7 @@ fn main() {
         }
         "-e" => {
             println!("Encrypting file..");
-            match encrypt_path(Path::new("./fold"), "password") {
+            match encrypt_path(file_path, password) {
                 Ok(_) => {
                     println!("Encrypted file");
                 }
