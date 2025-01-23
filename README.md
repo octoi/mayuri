@@ -1,4 +1,4 @@
-# MAYURI
+# MAYURI 🃏
 
 A simple file Encryptor.
 
